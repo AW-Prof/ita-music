@@ -1,0 +1,29 @@
+html {
+    background-color: #333;
+    color: #ccc;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+nav ol {
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+}
+
+h1 {
+    color: #6897bb;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+a {
+    color: #ffc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
