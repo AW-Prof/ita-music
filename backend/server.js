@@ -3,7 +3,7 @@ import { pool } from '../db/connect.js';
 
 const db = pool();
 
-const port = 3002;
+const port = process.env.port || 3002;
 const server = express();
 server.use(express.static('frontend'));
 server.use(onEachRequest);
