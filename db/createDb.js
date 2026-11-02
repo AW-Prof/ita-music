@@ -18,7 +18,7 @@ await db.query('drop table if exists artists');
 console.log('Creating tables...');
 await db.query(`
     create table artists (
-        artist_id   integer unique not null,
+        artist_id   integer primary key,
         stage_name  text,
         nationality char(2) not null,
         active      boolean not null default true,
@@ -27,8 +27,8 @@ await db.query(`
 `);
 await db.query(`
     create table albums (
-        album_id         integer unique not null,
-        artist_id        integer not null references artists (artist_id),
+        album_id         integer primary key,
+        artist_id        integer not null references artists,
         release_date     date,
         title            text,
         riaa_certificate text
@@ -36,7 +36,7 @@ await db.query(`
 `);
 await db.query(`
     create table media_types (
-        media_type_id integer unique not null,
+        media_type_id integer primary key,
         bit_depth     integer,
         sample_rate   real,
         lossless      boolean,
@@ -46,17 +46,17 @@ await db.query(`
 `);
 await db.query(`
     create table genres (
-        genre_id    integer unique not null,
+        genre_id    integer primary key,
         name        text,
         description text
     )
 `);
 await db.query(`
     create table tracks (
-        track_id      integer unique not null,
-        album_id      integer not null references albums (album_id),
-        media_type_id integer not null references media_types (media_type_id),
-        genre_id      integer not null references genres (genre_id),
+        track_id      integer primary key,
+        album_id      integer not null references albums,
+        media_type_id integer not null references media_types,
+        genre_id      integer not null references genres,
         milliseconds  integer check (milliseconds >= 0),
         bytes         bigint,
         unit_price    numeric(10, 2),
@@ -68,7 +68,7 @@ await db.query(`
 `);
 await db.query(`
     create table users (
-        user_id     bigint unique not null,
+        user_id     bigint primary key,
         signed_up   timestamp,
         active      boolean,
         screen_name text,
@@ -77,16 +77,16 @@ await db.query(`
 `);
 await db.query(`
     create table playlists (
-        playlist_id bigint unique not null,
-        user_id     bigint not null references users (user_id),
+        playlist_id bigint primary key,
+        user_id     bigint not null references users,
         created     timestamp,
         name        text
     )
 `);
 await db.query(`
     create table playlist_track (
-        playlist_id bigint not null references playlists (playlist_id),
-        track_id    integer not null references tracks (track_id)
+        playlist_id bigint not null references playlists,
+        track_id    integer not null references tracks
     )
 `);
 

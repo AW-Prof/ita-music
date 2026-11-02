@@ -3,6 +3,13 @@ html {
     color: #ccc;
     font-family: monospace;
     font-size: 16px;
+    scrollbar-gutter: stable;
+}
+
+body {
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 nav ol {
@@ -26,4 +33,80 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+input, select, textarea, button {
+    font: inherit;
+}
+
+a, nav, h1, label, button {
+    -webkit-user-select: none; /* Safari */
+    user-select: none;
+}
+
+.floating-actions {
+    position: fixed;
+    z-index: 1;
+    top: 2.8rem;
+    right: max(1rem, calc((100vw - 100ch) / 2 + 1rem));
+}
+
+dialog {
+    background-color: #333;
+    color: #ccc;
+    font-family: monospace;
+    font-size: 16px;
+    padding-top: 0;
+    inset: auto;
+    margin: auto;
+    top: 5rem;
+    right: max(1rem, calc((100vw - 100ch) / 2 + 1rem));
+}
+
+dialog form {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.75rem 1rem;
+    align-items: center;
+}
+
+dialog form input[type="checkbox"] {
+  margin: 0;
+  width: 1.25em;
+  height: 1.25em;
+  justify-self: start;
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    color: #cfc;
+}
+
+button:hover {
+    color: #3f3;
+}
+
+button:active {
+    color: #fff;
+}
+
+button:focus-visible {
+    outline: 2px solid #cfc;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+button:disabled {
+    color: #555;
+    cursor: default;
+}
+
+dialog .actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }

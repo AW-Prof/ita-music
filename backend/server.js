@@ -5,10 +5,14 @@ const db = pool();
 
 const port = process.env.PORT || 3002;
 const server = express();
+server.use(express.json());
 server.use(express.static('frontend'));
 server.use(onEachRequest);
 server.get('/api/artists', onGetArtists);
+server.post('/api/artists', onPostArtist);
 server.get('/api/artist/:artistId', onGetArtist);
+server.put('/api/artist/:artistId', onPutArtist);
+server.delete('/api/artist/:artistId', onDeleteArtist);
 server.get('/api/artist/:artistId/albums', onGetAlbumsForArtist);
 server.get('/api/albums', onGetAlbums);
 server.get('/api/album/:albumId', onGetAlbum);
@@ -25,8 +29,19 @@ async function onGetArtists(request, response) {
         select artist_id as id,
                stage_name as "stageName"
         from   artists
-        order by stage_name asc
+        order by lower(stage_name) asc
     `);
+    response.json(dbResult.rows);
+}
+
+async function onPostArtist(request, response) {
+    const stageName = request.body.stageName;
+    const nationality = request.body.nationality;
+    const isActive = request.body.isActive;
+    const dbResult = await db.query(`
+        insert into artists (artist_id, stage_name, nationality, active)
+        values (1 + (select max(artist_id) from artists), $1, $2, $3)
+    `, [stageName, nationality, isActive]);
     response.json(dbResult.rows);
 }
 
@@ -48,6 +63,30 @@ async function onGetArtist(request, response) {
     }
 }
 
+async function onPutArtist(request, response) {
+    const artistId = request.params.artistId;
+    const stageName = request.body.stageName;
+    const nationality = request.body.nationality;
+    const isActive = request.body.isActive;
+    const dbResult = await db.query(`
+        update artists
+        set    stage_name = $2,
+               nationality = $3,
+               active = $4
+        where  artist_id = $1
+    `, [artistId, stageName, nationality, isActive]);
+    response.json(dbResult.rows);
+}
+
+async function onDeleteArtist(request, response) {
+    const artistId = request.params.artistId;
+    const dbResult = await db.query(`
+        delete from artists
+        where  artist_id = $1
+    `, [artistId]);
+    response.sendStatus(204);
+}
+
 async function onGetAlbumsForArtist(request, response) {
     const artistId = request.params.artistId;
     const dbResult = await db.query(`
@@ -65,7 +104,7 @@ async function onGetAlbums(request, response) {
         select   album_id as id,
                  title
         from     albums
-        order by title asc
+        order by lower(title) asc
     `);
     response.json(dbResult.rows);
 }
@@ -98,7 +137,7 @@ async function onGetTracksForAlbum(request, response) {
                  title
         from     tracks
         where    album_id = $1
-        order by title asc
+        order by lower(title) asc
     `, [albumId]);
     response.json(dbResult.rows);
 }
@@ -108,7 +147,7 @@ async function onGetTracks(request, response) {
         select   track_id as id,
                  title
         from     tracks
-        order by title asc
+        order by lower(title) asc
     `);
     response.json(dbResult.rows);
 }
@@ -145,7 +184,7 @@ async function onGetGenres(request, response) {
         select   genre_id as id,
                  name
         from     genres
-        order by name asc
+        order by lower(name) asc
     `);
     response.json(dbResult.rows);
 }
@@ -174,7 +213,7 @@ async function onGetTracksForGenre(request, response) {
                  title
         from     tracks
         where    genre_id = $1
-        order by title asc
+        order by lower(title) asc
     `, [genreId]);
     response.json(dbResult.rows);
 }

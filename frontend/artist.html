@@ -14,6 +14,41 @@
                 <li><a href="genres.html">Genres</a></li>
             </ol>
         </nav>
+        <div class="floating-actions">
+            <button id="delete" disabled>Delete</button>
+            <button command="show-modal" commandfor="edit-dialog">Edit</button>
+        </div>
+        <dialog id="edit-dialog">
+            <h1>Edit artist</h1>
+            <form id="artist-form" method="dialog">
+                <label for="stage-name">Stage name:</label>
+                <input id="stage-name" name="stageName" type="text" placeholder="Stage name" size="40" required>
+                <label for="nationality">Nationality:</label>
+                <select id="nationality" name="nationality">
+                    <option value="AU">AU - Australia</option>
+                    <option value="BR">BR - Brazil</option>
+                    <option value="CA">CA - Canada</option>
+                    <option value="CO">CO - Colombia</option>
+                    <option value="DE">DE - Germany</option>
+                    <option value="DK">DK - Denmark</option>
+                    <option value="IE">IE - Ireland</option>
+                    <option value="JP">JP - Japan</option>
+                    <option value="FR">FR - France</option>
+                    <option value="KR">KR - South Korea</option>
+                    <option value="GB">GB - United Kingdom</option>
+                    <option value="MX">MX - Mexico</option>
+                    <option value="PR">PR - Puerto Rico</option>
+                    <option value="SE">SE - Sweden</option>
+                    <option value="US" selected>US - United States of America</option>
+                </select>
+                <label for="is-active">Still active:</label>
+                <input id="is-active" name="isActive" type="checkbox" checked>
+                <div class="actions">
+                   <button name="cancel" value="cancel" formnovalidate>Cancel</button>
+                   <button name="save" value="save">Save</button>
+                </div>
+            </form>
+        </dialog>
         <div id="content"></div>
         <script src="artist.js" type="module"></script>
     </body>

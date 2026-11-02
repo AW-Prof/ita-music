@@ -1,4 +1,27 @@
 const element = document.getElementById('content');
+const dialog = document.getElementById('add-dialog');
+const form = dialog.querySelector('form');
+
+dialog.addEventListener('close', async () => {
+    if (dialog.returnValue === 'cancel') {
+        return;
+    }
+    const response = await fetch('/api/artists', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            stageName: form.elements.stageName.value,
+            nationality: form.elements.nationality.value,
+            isActive: form.elements.isActive.checked,
+        }),
+    });
+    if (response.ok) {
+        loadAndRenderArtists(element);
+    } else {
+        alert('Operation failed. Please try again later.');
+    }
+});
+
 await loadAndRenderArtists(element);
 
 async function loadAndRenderArtists(element) {
