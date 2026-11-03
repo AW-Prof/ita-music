@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +15,49 @@
                 <li><a href="genres.html">Genres</a></li>
             </ol>
         </nav>
+
+        <div class="floating-actions">
+            <button class="dialog" command="show-modal"
+                    commandfor="add-dialog">Add album</button>
+        </div>
+
+        <dialog id="add-dialog">
+            <h1>Add album</h1>
+            <form id="album-form" method="dialog">
+                <label for="title">Title:</label>
+                <input id="title" name="title"
+                       type="text" placeholder="Album title"
+                       size="40" required>
+
+                <label for="artist">Artist:</label>
+                <select id="artist" name="artistId" required>
+                    <option value="">Select artist</option>
+                </select>
+
+                <label for="release-date">Release date:</label>
+                <input id="release-date" name="releaseDate"
+                       type="date">
+
+                <label for="riaa-certificate">RIAA certificate:</label>
+                <select id="riaa-certificate" name="riaaCertificate">
+                    <option value="">None</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Platinum">Platinum</option>
+                    <option value="2x Platinum">2x Platinum</option>
+                    <option value="3x Platinum">3x Platinum</option>
+                    <option value="4x Platinum">4x Platinum</option>
+                    <option value="5x Platinum">5x Platinum</option>
+                    <option value="Diamond">Diamond</option>
+                </select>
+
+                <div class="actions">
+                    <button name="cancel" value="cancel"
+                            formnovalidate>Cancel</button>
+                    <button name="add" value="add">Add</button>
+                </div>
+            </form>
+        </dialog>
+
         <div id="content"></div>
         <script src="albums.js" type="module"></script>
     </body>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +15,57 @@
                 <li><a href="genres.html">Genres</a></li>
             </ol>
         </nav>
+
+        <div class="floating-actions">
+            <button command="show-modal"
+                    commandfor="edit-dialog">Edit</button>
+        </div>
+
+        <dialog id="edit-dialog">
+            <h1>Edit album</h1>
+
+            <form id="album-form" method="dialog">
+                <label for="title">Title:</label>
+                <input id="title" name="title"
+                       type="text" size="40" required>
+
+                <label for="artist">Artist:</label>
+                <select id="artist" name="artistId" required>
+                    <option value="">Select artist</option>
+                </select>
+
+                <label for="release-date">Release date:</label>
+                <input id="release-date"
+                       name="releaseDate" type="date">
+
+                <label for="riaa-certificate">
+                    RIAA certificate:
+                </label>
+                <select id="riaa-certificate"
+                        name="riaaCertificate">
+                    <option value="">None</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Platinum">Platinum</option>
+                    <option value="2x Platinum">2x Platinum</option>
+                    <option value="3x Platinum">3x Platinum</option>
+                    <option value="4x Platinum">4x Platinum</option>
+                    <option value="5x Platinum">5x Platinum</option>
+                    <option value="6x Platinum">6x Platinum</option>
+                    <option value="7x Platinum">7x Platinum</option>
+                    <option value="8x Platinum">8x Platinum</option>
+                    <option value="10x Platinum">10x Platinum</option>
+                    <option value="Diamond">Diamond</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <div class="actions">
+                    <button name="cancel" value="cancel"
+                            formnovalidate>Cancel</button>
+                    <button name="save" value="save">Save</button>
+                </div>
+            </form>
+        </dialog>
+
         <div id="content"></div>
         <script src="album.js" type="module"></script>
     </body>
