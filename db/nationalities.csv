@@ -1,0 +1,101 @@
+nationality_id,code,name
+0,US,United States
+1,GB,United Kingdom
+2,CA,Canada
+3,AU,Australia
+4,NZ,New Zealand
+5,DE,Germany
+6,FR,France
+7,IT,Italy
+8,ES,Spain
+9,PT,Portugal
+10,NL,Netherlands
+11,BE,Belgium
+12,CH,Switzerland
+13,AT,Austria
+14,SE,Sweden
+15,NO,Norway
+16,DK,Denmark
+17,FI,Finland
+18,IS,Iceland
+19,IE,Ireland
+20,PL,Poland
+21,CZ,Czechia
+22,SK,Slovakia
+23,HU,Hungary
+24,RO,Romania
+25,BG,Bulgaria
+26,GR,Greece
+27,TR,Turkey
+28,RU,Russia
+29,UA,Ukraine
+30,BY,Belarus
+31,LT,Lithuania
+32,LV,Latvia
+33,EE,Estonia
+34,HR,Croatia
+35,RS,Serbia
+36,CN,China
+37,JP,Japan
+38,KR,South Korea
+39,KP,North Korea
+40,IN,India
+41,PK,Pakistan
+42,BD,Bangladesh
+43,LK,Sri Lanka
+44,NP,Nepal
+45,ID,Indonesia
+46,MY,Malaysia
+47,SG,Singapore
+48,TH,Thailand
+49,VN,Vietnam
+50,PH,Philippines
+51,MM,Myanmar
+52,KH,Cambodia
+53,LA,Laos
+54,MN,Mongolia
+55,KZ,Kazakhstan
+56,UZ,Uzbekistan
+57,AF,Afghanistan
+58,IR,Iran
+59,IQ,Iraq
+60,SA,Saudi Arabia
+61,AE,United Arab Emirates
+62,QA,Qatar
+63,KW,Kuwait
+64,OM,Oman
+65,YE,Yemen
+66,JO,Jordan
+67,LB,Lebanon
+68,SY,Syria
+69,IL,Israel
+70,EG,Egypt
+71,LY,Libya
+72,TN,Tunisia
+73,DZ,Algeria
+74,MA,Morocco
+75,SD,Sudan
+76,ET,Ethiopia
+77,KE,Kenya
+78,TZ,Tanzania
+79,UG,Uganda
+80,NG,Nigeria
+81,GH,Ghana
+82,CI,Ivory Coast
+83,SN,Senegal
+84,CM,Cameroon
+85,CD,DR Congo
+86,AO,Angola
+87,ZM,Zambia
+88,ZW,Zimbabwe
+89,ZA,South Africa
+90,MX,Mexico
+91,GT,Guatemala
+92,CR,Costa Rica
+93,PA,Panama
+94,CU,Cuba
+95,DO,Dominican Republic
+96,JM,Jamaica
+97,BR,Brazil
+98,AR,Argentina
+99,CO,Colombia
